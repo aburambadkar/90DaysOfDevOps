@@ -11,7 +11,7 @@ every shell command that we run is converted into a process and we can list that
 
 What systemd does and why it matters:
 
-systemd is the first process with PID 1 that starts after kernel is loaded. It is the parent of all system processes as it is responsible to start all system services. if any system service is crash such as docker, we use systemctl command to check its logs or any other info.
+systemd is the first process with PID 1 that starts after kernel is loaded. It is the parent of all system processes as it is responsible to start all system services. if any system service is crash such as docker, we use systemctl command to check its logs or any other info. More info: https://medium.com/@Adewuumii/why-systemd-matters-and-how-to-effectively-use-it-without-losing-your-mind-3386872a6555
 
 
 Explain process states (running, sleeping, zombie, etc.)
