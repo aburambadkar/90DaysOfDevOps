@@ -4,6 +4,7 @@ Pull the nginx, ubuntu, and alpine images from Docker Hub - docker pull <image n
 List all images on your machine — note the sizes
 
 akshada@linux-practice:~$ docker images | grep -E 'nginx|ubuntu|alpine'
+
 nginx                latest     0cf1d6af5ca7   17 hours ago   161MB
 ubuntu               latest     f794f40ddfff   4 weeks ago    78.1MB
 alpine               latest     a40c03cbb81c   8 weeks ago    8.44MB
@@ -21,55 +22,55 @@ Run docker image history nginx — what do you see?
 
 We notice all the build steps of this nginx image
 akshada@linux-practice:~$ docker image history nginx
+
 IMAGE          CREATED        CREATED BY                                      SIZE      COMMENT
 0cf1d6af5ca7   17 hours ago   CMD ["nginx" "-g" "daemon off;"]                0B        buildkit.dockerfile.v0
+
 <missing>      17 hours ago   STOPSIGNAL SIGQUIT                              0B        buildkit.dockerfile.v0
+
 <missing>      17 hours ago   EXPOSE map[80/tcp:{}]                           0B        buildkit.dockerfile.v0
+
 <missing>      17 hours ago   ENTRYPOINT ["/docker-entrypoint.sh"]            0B        buildkit.dockerfile.v0
+
 <missing>      17 hours ago   COPY 30-tune-worker-processes.sh /docker-ent…   4.62kB    buildkit.dockerfile.v0
+
 <missing>      17 hours ago   COPY 20-envsubst-on-templates.sh /docker-ent…   3.02kB    buildkit.dockerfile.v0
-<missing>      17 hours ago   COPY 15-local-resolvers.envsh /docker-entryp…   389B      buildkit.dockerfile.v0
-<missing>      17 hours ago   COPY 10-listen-on-ipv6-by-default.sh /docker…   2.12kB    buildkit.dockerfile.v0
-<missing>      17 hours ago   COPY docker-entrypoint.sh / # buildkit          1.62kB    buildkit.dockerfile.v0
-<missing>      17 hours ago   RUN /bin/sh -c set -x     && groupadd --syst…   82.3MB    buildkit.dockerfile.v0
-<missing>      17 hours ago   ENV DYNPKG_RELEASE=1~trixie                     0B        buildkit.dockerfile.v0
-<missing>      17 hours ago   ENV PKG_RELEASE=1~trixie                        0B        buildkit.dockerfile.v0
-<missing>      17 hours ago   ENV ACME_VERSION=0.3.1                          0B        buildkit.dockerfile.v0
-<missing>      17 hours ago   ENV NJS_RELEASE=1~trixie                        0B        buildkit.dockerfile.v0
-<missing>      17 hours ago   ENV NJS_VERSION=0.9.6                           0B        buildkit.dockerfile.v0
-<missing>      17 hours ago   ENV NGINX_VERSION=1.29.7                        0B        buildkit.dockerfile.v0
-<missing>      17 hours ago   LABEL maintainer=NGINX Docker Maintainers <d…   0B        buildkit.dockerfile.v0
-<missing>      9 days ago     # debian.sh --arch 'amd64' out/ 'trixie' '@1…   78.6MB    debuerreotype 0.17
-akshada@linux-practice:~$
+
 
 Each line is a layer. Note how some layers show sizes and some show 0B
 
 Write in your notes: What are layers and why does Docker use them?
-Each command you include in docker file to build this image is converted into one layer of some size. If another build has a layer in common, 
-docker will not create another layer, instead with cache this layer and build other layers on top of it. This caching makes images small in size
-and consume less resources.
+
+Each command you include in docker file to build this image is converted into one layer of some size. If another build has a layer in common, docker will not create another layer, instead with cache this layer and build other layers on top of it. This caching makes images small in sizeand consume less resources.
 
 Task 3: Container Lifecycle
 
 Practice the full lifecycle on one container:
 
 Create a container (without starting it) - docker create --name mycontainer nginx
+
 Start the container - docker start containername
+
 Pause it and check status - 
 
 akshada@linux-practice:~$ docker pause mycon
 mycon
-akshada@linux-practice:~$ docker ps
+
+ docker ps
 CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS                   PORTS     NAMES
 d9cf2530d0b7   nginx     "/docker-entrypoint.…"   31 seconds ago   Up 18 seconds (Paused)   80/tcp    mycon
 akshada@linux-practice:~$
 
-Unpause it - docker unpause d9cf2530d0b7 
+Unpause it - docker unpause d9cf2530d0b7
+
 Stop it - docker stop containerID (brings the container in exited state with 0 code)
+
 Restart it - docker restart containername
 
 Kill it - (brings the container in exited state with 137 code)
+
 akshada@linux-practice:~$ docker ps -a
+
 CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS                       PORTS     NAMES
 d9cf2530d0b7   nginx     "/docker-entrypoint.…"   3 minutes ago   Exited (137) 6 seconds ago             mycon
 akshada@linux-practice:~$
@@ -79,9 +80,13 @@ Remove it - docker stop id && docker rm id
 Task 4: Working with Running Containers
 
 Run an Nginx container in detached mode -  docker run -d nginx
+
 View its logs - docker logs ID
+
 View real-time logs (follow mode) - docker logs -f ID
+
 Exec into the container and look around the filesystem - docker exec -it ID /bin/bash
+
 Run a single command inside the container without entering it
 
 docker exec -it 77a94c9ce958  df -h
