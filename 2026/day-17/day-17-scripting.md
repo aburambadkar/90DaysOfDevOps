@@ -5,13 +5,13 @@ Loops through a list of 5 fruits and prints each one
 
 Script:
 
+```
 #!/bin/bash
-#
 
 for fruit in apples oranges banana cherry grapes; do
 	echo "$fruit"
 done
-
+```
 Output:
 
 akshada@linux-practice:~/devops/90DaysOfDevOps/2026/day-17$ ./forloop.sh
@@ -25,13 +25,13 @@ grapes
 Prints numbers 1 to 10 using a for loop
 
 Script:
-
+```
 #!/bin/bash
-#
+
 for i in {1..10}; do
 	echo $i
 done
-
+```
 Output:
 
 akshada@linux-practice:~/devops/90DaysOfDevOps/2026/day-17$ ./count.sh
@@ -52,9 +52,9 @@ Counts down to 0 using a while loop
 Prints "Done!" at the end
 
 Script:
-
+```
 #!/bin/bash
-#
+
 read -p "Please provide a number: " mynum
 
 while [ "$mynum" -ge 0 ]; do
@@ -63,7 +63,7 @@ while [ "$mynum" -ge 0 ]; do
       my_num=$((my_num - 1))
       sleep 1
 done
-
+```
 Output:
 
 akshada@linux-practice:~/devops/90DaysOfDevOps/2026/day-17$ ./countdown.sh
@@ -87,35 +87,37 @@ Prints Hello, <name>!
 If no argument is passed, prints "Usage: ./greet.sh "
 
 Script:
-
+```
 #!/bin/bash
 
 myname=$1
-
 
 if [ -n "$myname" ]; then
 	echo "Hello, $myname!"
 else
 	echo "Usage: ./greet.sh name"
 fi
-
+```
 Output:
 
-akshada@linux-practice:~/devops/90DaysOfDevOps/2026/day-17$ ./greet.sh
+./greet.sh
+
 Usage: ./greet.sh name
-akshada@linux-practice:~/devops/90DaysOfDevOps/2026/day-17$ ./greet.sh aksh
+
+./greet.sh aksh
+
 Hello, aksh!
 
 5) Create argsdemo.sh that:
 
-Prints total number of arguments ($#)
-Prints all arguments ($@)
-Prints the script name ($0)
+Prints total number of arguments 
+Prints all arguments 
+Prints the script name 
 
 Script:
-
+```
 #!/bin/bash
-#
+
 Totalnumber=$#
 allarg=$@
 scriptname=$0
@@ -123,7 +125,7 @@ scriptname=$0
 echo "The total number of arguments is '$Totalnumber'"
 echo "list of arguments passed is '$allarg'"
 echo "The script name is '$scriptname'"
-
+```
 Output:
 
 akshada@linux-practice:~/devops/90DaysOfDevOps/2026/day-17$ ./argsdemo.sh
@@ -140,8 +142,7 @@ Prints status for each package
 Modify your installpackages.sh to check if the script is being run as root — exit with a message if not.
 
 Script:
-
-akshada@linux-practice:~/devops/90DaysOfDevOps/2026/day-17$ cat installpackages.sh
+```
 #!/bin/bash
 #
 if [ "$EUID" -ne 0 ]; then
@@ -159,7 +160,7 @@ for package in "${packages[@]}"; do
 		echo "'$package' is installed"
 	fi
 done
-
+```
 
 Output:
 Not adding the output because of the EUID condition.
@@ -173,17 +174,16 @@ Creates a file inside
 Uses || operator to print an error if any step fails
 
 Script:
-
+```
 #!/bin/bash
-#
+
 set -e
 mkdir -d /tmp/devops-test || {echo "Failed to create a directory"; exit 1;}
 cd /tmp/devops-test || {echo "Failed to enter in the directory"; exit 1;}
 touch test.txt || {echo "Failed to create a file"; exit 1;}
 
 echo "Success! File created"
-
-
+```
 Output:
 
 Its better to rrun the script as it can have different outputs.
