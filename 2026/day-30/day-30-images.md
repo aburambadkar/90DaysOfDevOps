@@ -94,8 +94,11 @@ Inspect the container — find its IP address, port mappings, and mounts - docke
 Task 5: Cleanup
 
 Stop all running containers in one command: for i in $(docker ps | awk 'NR > 1 {print $1}'); do docker stop $i; done
+
 Remove all stopped containers in one command: for i in $(docker ps -a | awk 'NR > 1 {print $1}'); do docker stop $i; done
+
 Remove unused images- docker image prune
+
 Check how much disk space Docker is using - docker system df
 
 
