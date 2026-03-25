@@ -60,23 +60,29 @@ DEPRECATED: The legacy builder is deprecated and will be removed in a future rel
 Sending build context to Docker daemon  3.072kB
 Step 1/6 : FROM python:3.9-slim
  ---> 085da638e1b8
+ 
 Step 2/6 : WORKDIR /app
  ---> Using cache ----------------------------->
  ---> 4fef82ee627a
+ 
 Step 3/6 : COPY index.html .
  ---> 4598a0c598c2
+ 
 Step 4/6 : RUN touch /app/build_complete.txt
  ---> Running in ce52f35579d6
  ---> Removed intermediate container ce52f35579d6
  ---> 93a30863199b
+ 
 Step 5/6 : EXPOSE 8080
  ---> Running in a96a77414cd9
  ---> Removed intermediate container a96a77414cd9
  ---> 86302d2164af
+ 
 Step 6/6 : CMD ["python","-m", "http.server", "8080"]
  ---> Running in cda8e10e1911
  ---> Removed intermediate container cda8e10e1911
  ---> 85fdcd3ca581
+ 
 Successfully built 85fdcd3ca581
 Successfully tagged my-greet-app:v2
 akshada@linux-practice:~/my-first-image$
