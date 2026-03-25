@@ -87,18 +87,7 @@ View real-time logs (follow mode) - docker logs -f ID
 
 Exec into the container and look around the filesystem - docker exec -it ID /bin/bash
 
-Run a single command inside the container without entering it
-
-docker exec -it 77a94c9ce958  df -h
-Filesystem      Size  Used Avail Use% Mounted on
-overlay          48G  3.0G   45G   7% /
-tmpfs            64M     0   64M   0% /dev
-shm              64M     0   64M   0% /dev/shm
-/dev/sda1        48G  3.0G   45G   7% /etc/hosts
-tmpfs           3.9G     0  3.9G   0% /proc/acpi
-tmpfs           3.9G     0  3.9G   0% /proc/scsi
-tmpfs           3.9G     0  3.9G   0% /sys/firmware
-akshada@linux-practice:~$
+Run a single command inside the container without entering it- docker exec -it 77a94c9ce958  df -h
 
 Inspect the container — find its IP address, port mappings, and mounts - docker inspect containerID
 
