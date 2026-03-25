@@ -126,9 +126,9 @@ Create an image with CMD ["echo", "hello"] — run it, then run it with a custom
 
 akshada@linux-practice:~/my-first-image$ docker run image
 hello
+
 akshada@linux-practice:~/my-first-image$ docker run image world
 /docker-entrypoint.sh: 47: exec: world: not found
-akshada@linux-practice:~/my-first-image$
 
 
 Create an image with ENTRYPOINT ["echo"] — run it, then run it with additional arguments. What happens?
