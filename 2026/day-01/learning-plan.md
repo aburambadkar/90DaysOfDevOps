@@ -15,7 +15,7 @@ How you will stay consistent every single day?
 I believe in having balance to achieve/sustain any long term goal. I am not working at the current moment hence I will commit 4 to 6 hrs daily until I become interview ready.
 
 
-############
+#GOALS
 
 Define 3 clear goals for the next 90 days
 deploy a production-grade application on Kubernetes.
