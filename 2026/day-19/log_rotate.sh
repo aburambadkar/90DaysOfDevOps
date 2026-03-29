@@ -2,8 +2,8 @@
 set -euo pipefail
 
 log_dir=${1:-""}
-date=$(date '+%Y-%m-%d')
-backup_dir=/var/log/backup/
+date=$(date '+%Y-%m-%d_%H-%M-%S')
+backup_dir=/home/akshada/backup/
 
 log_cleanup() {
 
@@ -21,7 +21,7 @@ log_backup() {
 	if [ -d "$log_dir" ]; then
                 echo "Checking log files older that 7 days  under $log_dir for backup"
                 count_7=$(find $log_dir -name '*.log' -mtime +7 | wc -l)
-                find $log_dir -name '*.log' -mtime +7 | xargs tar -czvf '$backup_dir/backup_$date.tar.gz' 
+                find $log_dir -name '*.log' -mtime +7 | xargs tar -czvf "$backup_dir/backup_$date.tar.gz"
         fi
 
 }
@@ -38,9 +38,10 @@ log_usage() {
 }
 
 #----------Execution flow---------
-log_usage
-log_cleanup
-log_backup
+#All the mines were commented for testing maintainance script. For individual run, please uncomment it.
+#log_usage
+#log_cleanup
+#log_backup
 
 
 

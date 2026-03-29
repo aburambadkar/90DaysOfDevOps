@@ -1,8 +1,9 @@
 #!/bin/bash
+set -euo pipefail
 
-source_dir=$1
-backup_dir=$2
-timestamp=$(date '+%Y-%m-%d')
+source_dir=${1:-""}
+backup_dir=${2:-""}
+timestamp=$(date '+%Y-%m-%d_%H-%M-%S')
 
 backup_usage() {
 
@@ -19,9 +20,11 @@ elif [ -z "$source_dir" ] || [ -z "$backup_dir" ]; then
 elif [ ! -d "$source_dir" ]; then
 	echo "Error: source directory does not exists"
 	exit 1
-else
-	echo "Error: backup destination directory does not exists"
+elif [ ! -d "$backup_dir" ]; then
+	echo "Error: backup directory does not exists"
 	exit 1
+else
+	echo "All directories verified. Starting backup..."
 fi
 }
 
@@ -41,15 +44,16 @@ fi
 delete_olderbackups() {
 
 if [ -d "$backup_dir" ] ; then
-	find "$backup_dir" -name "*.tar.gz" -mtime +14 --delete
+	find "$backup_dir" -name "*.tar.gz" -mtime +14 -delete
 fi
 
 }
 
 
-backup_usage
-delete_backup
-create_backup
+#All the mines were commented for testing maintainance script. For individual run, please uncomment it.
+#backup_usage
+#delete_olderbackups
+#create_backup
 
 
 
