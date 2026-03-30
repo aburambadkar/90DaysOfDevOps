@@ -8,7 +8,7 @@ Sets a default command to print "Hello from my custom image!"
 Build the image and tag it my-ubuntu:v1
 Run a container from your image
 Verify: The message prints on docker run
-
+```
 akshada@linux-practice:~/my-first-image$ cat Dockerfile
 FROM ubuntu
 
@@ -19,7 +19,7 @@ CMD ["echo","Hello from my custom image!"]
 
 akshada@linux-practice:~/my-first-image$ docker run my-ubuntu:v1
 Hello from my custom image!
-
+```
 
 Task 2: Dockerfile Instructions
 Create a new Dockerfile that uses all of these instructions:
@@ -31,7 +31,7 @@ WORKDIR — set working directory
 EXPOSE — document the port
 CMD — default command
 Build and run it. Understand what each line does.
-
+```
 akshada@linux-practice:~/my-first-image$ cat Dockerfile
 
 FROM python:3.9-slim
@@ -46,12 +46,13 @@ EXPOSE 8080
 
 CMD ["python","-m", "http.server", "8080"]
 akshada@linux-practice:~/my-first-image$
+```
 
 Task 3: Build Optimization
 Build an image, then change one line and rebuild — notice how Docker uses cache
 
 Changed content of index.html and rebuild the image with v2 and noticed the docker uses cache for layer 2:
-
+```
 akshada@linux-practice:~/my-first-image$ docker build -t my-greet-app:v2 .
 DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
             Install the buildx component to build images with BuildKit:
@@ -86,7 +87,7 @@ Step 6/6 : CMD ["python","-m", "http.server", "8080"]
 Successfully built 85fdcd3ca581
 Successfully tagged my-greet-app:v2
 akshada@linux-practice:~/my-first-image$
-
+```
 Reorder your Dockerfile so that frequently changing lines come last
 
 Write in your notes: Why does layer order matter for build speed
@@ -107,7 +108,7 @@ Uses nginx:alpine as base
 Copies your index.html to the Nginx web directory
 Build and tag it my-website:v1
 Run it with port mapping and access it in your browser
-
+```
 Dockerfile
 
 FROM nginx:alpine
@@ -115,6 +116,7 @@ COPY index.html /usr/share/nginx/html/index.html
 
 docker build -t my-website:v1 .
 docker run -d -p 80:80 --name my-nginx my-website:v1
+```
 
 Task 5: .dockerignore
 Create a .dockerignore file in one of your project folders
@@ -123,20 +125,21 @@ Build the image — verify that ignored files are not included
 
 Task 6: CMD vs ENTRYPOINT
 Create an image with CMD ["echo", "hello"] — run it, then run it with a custom command. What happens?
-
+```
 akshada@linux-practice:~/my-first-image$ docker run image
 hello
 
 akshada@linux-practice:~/my-first-image$ docker run image world
 /docker-entrypoint.sh: 47: exec: world: not found
 
-
+```
 Create an image with ENTRYPOINT ["echo"] — run it, then run it with additional arguments. What happens?
-
+```
 akshada@linux-practice:~/my-first-image$ docker run newimage
 
 akshada@linux-practice:~/my-first-image$ docker run newimage hello
 hello
+```
 
 Write in your notes: When would you use CMD vs ENTRYPOINT?
 
