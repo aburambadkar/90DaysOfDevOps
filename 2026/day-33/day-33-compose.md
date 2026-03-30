@@ -1,9 +1,13 @@
 Task 1: Install & Verify:
 
-Check if Docker Compose is available on your machine - apt-get install docker-compose -y
-
-Verify the version - docker-compose version
-
+Check if Docker Compose is available on your machine:
+```
+apt-get install docker-compose -y
+```
+Verify the version:
+```
+docker-compose version
+```
 
 Task 2: Your First Compose File
 
@@ -73,20 +77,34 @@ networks:
 
 Task 4: Compose Commands
 
-Start services in detached mode- docker compose up -d
-
-View running services - docker-compose ps
-
-View logs of all services - docker-compose logs
-
-View logs of a specific service - docker-compose logs wordpress
-
-Stop services without removing - docker-compose stop
-
-Remove everything (containers, networks) - docker-compose down
-
-Rebuild images if you make a change - docker compose up --build
+Start services in detached mode:
 ```
+docker compose up -d
+```
+View running services:
+```
+docker-compose ps
+```
+View logs of all services:
+```
+docker-compose logs
+```
+View logs of a specific service:
+```
+docker-compose logs wordpress
+```
+Stop services without removing:
+```
+docker-compose stop
+```
+Remove everything (containers, networks):
+```
+docker-compose down
+```
+Rebuild images if you make a change:
+```
+docker compose up --build
+
 services:
   my-app:
     build: .   # This tells Compose: "Look for a Dockerfile in this folder"
