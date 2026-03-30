@@ -44,31 +44,49 @@ Read the output carefully — it explains what just happened
 
 Task 3: Run Real containers
 
-Run an Nginx container and access it in your browser - docker run -d -p 80:80 --name mynginx nginx
-
-Run an Ubuntu container in interactive mode — explore it like a mini Linux machine - docker run -it --name ubuntumachine ubuntu
-
-List all running containers - docker ps 
-
-List all containers (including stopped ones)- docker ps -a
-
-Stop and remove a container - docker stop 27655549a6dd && docker rm 27655549a6dd
-
+Run an Nginx container and access it in your browser :
+```
+docker run -d -p 80:80 --name mynginx nginx
+```
+Run an Ubuntu container in interactive mode — explore it like a mini Linux machine:
+```
+docker run -it --name ubuntumachine ubuntu
+```
+List all running containers:
+```
+docker ps 
+```
+List all containers (including stopped ones):
+```
+docker ps -a
+```
+Stop and remove a container:
+```
+docker stop 27655549a6dd && docker rm 27655549a6dd
+```
 Task 4: Explore
 
 Run a container in detached mode — what's different? You do not get a shell. 
-
+```
 docker run -d --name ubuntumachine ubuntu
 7d13534e4725e9b6350292ffa7c3606f4f6295c8bee43835970485ff30f3f9d9
-
-Give a container a custom name - docker run -it --name ubuntumachine ubuntu
-
-Map a port from the container to your host - docker run -d -p 80:80 --name mynginx nginx
-
-Check logs of a running container - docker logs containerID
-
-Run a command inside a running container - you can also use docker exec -it containerID /bin/bash
-
+```
+Give a container a custom name:
+```
+docker run -it --name ubuntumachine ubuntu
+```
+Map a port from the container to your host:
+```
+docker run -d -p 80:80 --name mynginx nginx
+```
+Check logs of a running container:
+```
+docker logs containerID
+```
+Run a command inside a running container - you can also use 
+```
+docker exec -it containerID /bin/bash
+```
 
 
 
