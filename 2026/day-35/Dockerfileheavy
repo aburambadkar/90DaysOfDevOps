@@ -1,0 +1,11 @@
+FROM golang:1.21
+
+WORKDIR /app
+
+COPY main.go .
+
+RUN go build -o hello-app main.go
+
+CMD ["./hello-app"]
+
+
