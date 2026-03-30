@@ -15,8 +15,10 @@ Compare ubuntu vs alpine — why is one much smaller? I assume that the ubuntu h
 
 Inspect an image — what information can you see? Metadata about the image
 
-Remove an image you no longer need - docker image rm imageID
-
+Remove an image you no longer need:
+```
+docker image rm imageID
+```
 Task 2: Image Layers
 
 Run docker image history nginx — what do you see? 
@@ -49,25 +51,37 @@ Task 3: Container Lifecycle
 
 Practice the full lifecycle on one container:
 
-Create a container (without starting it) - docker create --name mycontainer nginx
-
-Start the container - docker start containername
-
+Create a container (without starting it):
+```
+docker create --name mycontainer nginx
+```
+Start the container:
+```
+docker start containername
+```
 Pause it and check status - 
-
+```
 akshada@linux-practice:~$ docker pause mycon
 mycon
-```
+
  docker ps
 CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS                   PORTS     NAMES
 d9cf2530d0b7   nginx     "/docker-entrypoint.…"   31 seconds ago   Up 18 seconds (Paused)   80/tcp    mycon
 akshada@linux-practice:~$
 ```
-Unpause it - docker unpause d9cf2530d0b7
+Unpause it:
+```
+docker unpause d9cf2530d0b7
+```
 
-Stop it - docker stop containerID (brings the container in exited state with 0 code)
-
-Restart it - docker restart containername
+Stop it:
+```
+docker stop containerID (brings the container in exited state with 0 code)
+```
+Restart it:
+```
+docker restart containername
+```
 
 Kill it - (brings the container in exited state with 137 code)
 ```
@@ -77,21 +91,42 @@ CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS        
 d9cf2530d0b7   nginx     "/docker-entrypoint.…"   3 minutes ago   Exited (137) 6 seconds ago             mycon
 akshada@linux-practice:~$
 ```
-Remove it - docker stop id && docker rm id
+
+Remove it:
+```
+docker stop id && docker rm id
+```
 
 Task 4: Working with Running Containers
 
-Run an Nginx container in detached mode -  docker run -d nginx
+Run an Nginx container in detached mode:
+```
+docker run -d nginx
+```
 
-View its logs - docker logs ID
+View its logs:
+```
+docker logs ID
+```
 
-View real-time logs (follow mode) - docker logs -f ID
+View real-time logs (follow mode):
+```
+docker logs -f ID
+```
 
-Exec into the container and look around the filesystem - docker exec -it ID /bin/bash
+Exec into the container and look around the filesystem:
+```
+docker exec -it ID /bin/bash
+```
 
-Run a single command inside the container without entering it- docker exec -it 77a94c9ce958  df -h
-
-Inspect the container — find its IP address, port mappings, and mounts - docker inspect containerID
+Run a single command inside the container without entering it:
+```
+docker exec -it 77a94c9ce958  df -h
+```
+Inspect the container — find its IP address, port mappings, and mounts:
+```
+docker inspect containerID
+```
 
 Task 5: Cleanup
 Stop all running containers in one command:
@@ -103,10 +138,14 @@ Remove all stopped containers in one command:
 ```
 for i in $(docker ps -a | awk 'NR > 1 {print $1}'); do docker rm $i; done
 ```
-Remove unused images- docker image prune
-
-Check how much disk space Docker is using - docker system df
-
+Remove unused images:
+```
+docker image prune
+```
+Check how much disk space Docker is using:
+```
+docker system df
+```
 
 
 
