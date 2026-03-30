@@ -1,0 +1,49 @@
+networks:
+  my-app-network:
+
+volumes:
+  myvol:
+
+services:
+  my-app-container:
+    #image: my-app:v1
+    build: .
+    ports:
+    - 5000:5000
+    networks:
+    -  my-app-network
+    environment:
+      MYSQL_DB_HOST: mysql
+      MYSQL_DB_USER: akshada
+      MYSQL_DB_PASSWORD: password123
+    depends_on:
+      mysql:
+        condition: "service_healthy"
+      redis:
+        condition: "service_started"
+
+  mysql:
+    image: mysql:8.0
+    restart: always
+    volumes:
+      - myvol:/var/lib/mysql
+    networks:
+      - my-app-network
+    environment:
+      MYSQL_USER: akshada
+      MYSQL_PASSWORD: password123
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pmy-secret-pw"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+
+  redis:
+    image: redis
+    networks:
+      - my-app-network
+
+    
+
