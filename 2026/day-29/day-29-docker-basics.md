@@ -8,6 +8,7 @@ Container is a standard unit of a software that packages up code along with its 
 from one computing environment to another. 
 
 2) Why we need them?
+   
 VMs have a full-fledged OS and hypervisor, making them more resource-intensive. While Containers share the host operating system kernel, 
 making them lighter and faster than VMs. Containers are designed to be portable and can run on any system with a compatible host operating system.
 Managing containers is typically easier than managing VMs, as containers are designed to be lightweight and fast-moving.
