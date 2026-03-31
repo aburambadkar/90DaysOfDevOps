@@ -22,6 +22,7 @@ Hello from my custom image!
 ```
 
 Task 2: Dockerfile Instructions
+
 Create a new Dockerfile that uses all of these instructions:
 
 FROM — base image
@@ -49,6 +50,7 @@ akshada@linux-practice:~/my-first-image$
 ```
 
 Task 3: Build Optimization
+
 Build an image, then change one line and rebuild — notice how Docker uses cache
 
 Changed content of index.html and rebuild the image with v2 and noticed the docker uses cache for layer 2:
@@ -92,10 +94,7 @@ Reorder your Dockerfile so that frequently changing lines come last
 
 Write in your notes: Why does layer order matter for build speed
 
-Docker checks the FROM statement and sees that the python image is already present locally from the last build. On step 2, it uses cache because 
-it sees that it has already ran same Workdir command on this image from the last build, so instead of creating a new layer it uses the same layer
-from last build. It then proceeds to the copy index.htm and sees that the content has changed and starts creating new layers. At this point, cache
-chain is broken and docker recreates below layers. 
+Docker checks the FROM statement and sees that the python image is already present locally from the last build. On step 2, it uses cache because it sees that it has already ran same Workdir command on this image from the last build, so instead of creating a new layer it uses the same layer from last previous. It then proceeds to the copy index.html step and sees that the content has changed and starts creating new layers. At this point, cache chain is broken and docker recreates below layers. 
 
 This is why we always put the things that change the least (like WORKDIR or installing heavy dependencies) at the top of the Dockerfile, 
 and the things that change the most (like your source code) at the bottom.
