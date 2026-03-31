@@ -1,6 +1,9 @@
 Task 1: Docker images
 
-Pull the nginx, ubuntu, and alpine images from Docker Hub - docker pull <image name>
+Pull the nginx, ubuntu, and alpine images from Docker Hub:
+```
+docker pull <image name>
+```
 List all images on your machine — note the sizes
 ```
 akshada@linux-practice:~$ docker images | grep -E 'nginx|ubuntu|alpine'
@@ -11,9 +14,11 @@ alpine               latest     a40c03cbb81c   8 weeks ago    8.44MB
 akshada@linux-practice:~$
 ```
 
-Compare ubuntu vs alpine — why is one much smaller? I assume that the ubuntu has more layers compared to alpine.
+Compare ubuntu vs alpine — why is one much smaller? 
+ubuntu has more layers compared to alpine.
 
-Inspect an image — what information can you see? Metadata about the image
+Inspect an image — what information can you see? 
+Metadata about the image
 
 Remove an image you no longer need:
 ```
@@ -45,7 +50,7 @@ Each line is a layer. Note how some layers show sizes and some show 0B
 
 Write in your notes: What are layers and why does Docker use them?
 
-Each command you include in docker file to build this image is converted into one layer of some size. If another build has a layer in common, docker will not create another layer, instead with cache this layer and build other layers on top of it. This caching makes images small in sizeand consume less resources.
+Each command you include in docker file to build this image is converted into one layer of some size. If a build has a layer in common, docker will not create another layer, instead it will cache this layer and build other layers on top of it. This caching makes images small in size and consume less resources.
 
 Task 3: Container Lifecycle
 
