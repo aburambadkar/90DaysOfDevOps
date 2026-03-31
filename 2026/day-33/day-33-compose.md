@@ -52,7 +52,7 @@ Verify: Stop and restart with docker compose down and docker compose up — is y
     ports:
     - 8080:80
     environment:
-      WORDPRESS_DB_HOST: mysql:3306
+      WORDPRESS_DB_HOST: mysql
       WORDPRESS_DB_USER: akshada
       WORDPRESS_DB_PASSWORD: password123
 
