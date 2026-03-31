@@ -19,10 +19,12 @@ as the containers do not need to include a full operating system. Additionally, 
 for the application to run, further reducing their size.
 
 3) Difference between VM's and Containers?
+   
 Please refer above points for the distinction. One more point- VMs provide a higher level of security as each VM has its own operating system 
 and can be isolated from the host and other VMs. Containers provide less isolation, as they share the host operating system.
 
-4) What is docker and docker architecture?
+5) What is docker and docker architecture?
+   
 Docker is a containerization platform that provides easy way to containerize your applications, which means, using Docker you can build
 container images, run the images to create containers and also push these containers to container regestries such as DockerHub, Quay.io and so on.
 
@@ -30,11 +32,20 @@ Refer the github link for the architecture and explanation.
 
 Task 2: Install Docker
 
-Install Docker on your machine (or use a cloud instance) - sudo apt-get install docker.io -y
-Verify the installation - systemctl status docker
-Run the hello-world container - docker run hello-world
+Install Docker on your machine (or use a cloud instance) 
+```
+sudo apt-get install docker.io -y
+```
+Verify the installation:
+```
+systemctl status docker
+```
+Run the hello-world container:
+```
+docker run hello-world
+```
 Read the output carefully — it explains what just happened
-
+```
 1. The Docker client contacted the Docker daemon.
 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
     (amd64)
@@ -42,7 +53,7 @@ Read the output carefully — it explains what just happened
     executable that produces the output you are currently reading.
 4. The Docker daemon streamed that output to the Docker client, which sent it
     to your terminal.
-
+```
 Task 3: Run Real containers
 
 Run an Nginx container and access it in your browser :
