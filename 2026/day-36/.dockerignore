@@ -1,0 +1,27 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Docker/DevOps
+.dockerignore
+Dockerfile
+docker-compose.yml
+.env
+.txt
+.md
+
+# MacOS/Linux noise
+.DS_Store
+.thumbs

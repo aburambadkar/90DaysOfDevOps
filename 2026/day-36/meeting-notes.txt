@@ -1,0 +1,9 @@
+This app connects to a database, creates a table if it doesn't exist, and lets users add "Tasks."
+
+- have to make sure that the db is accepting connections before checking if the table name tasks exists or not. (use depends on condition: service healthy) 
+
+- port is hardcoded to use 5000, this will require port mapping
+
+- db service name is hardcode so make sure to use the same name db in the compose.
+
+- Any specific python versions required for this image: python:3.9-alpine

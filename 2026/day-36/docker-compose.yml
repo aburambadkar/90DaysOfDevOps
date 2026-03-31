@@ -1,0 +1,43 @@
+volumes:
+  my_data:
+
+networks:
+  my_docker_net:
+
+
+services:
+  my_docker_service:
+    image: 42920/flask-postgres-app:v1
+    networks:
+      - my_docker_net
+    ports:
+      -  8080:5000
+    depends_on:
+      db:
+       condition: "service_healthy"
+    environment:
+      DB_NAME: tasksdb
+      DB_USER: admin
+      DB_PASS: ${DB_PASS}
+      DB_HOST: db
+    
+  db:
+    image: postgres:15-alpine
+    networks:
+      - my_docker_net
+    volumes:
+      - my_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: tasksdb        # Must match Flask's DB_NAME
+      POSTGRES_USER: admin        # Must match Flask's DB_USER
+      POSTGRES_PASSWORD: ${DB_PASS} # Must match Flask's DB_PASS
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d tasksdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+
+
+
+
