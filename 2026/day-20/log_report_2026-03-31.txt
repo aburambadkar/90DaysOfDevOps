@@ -1,0 +1,16 @@
+Date of analysis: 2026-03-31
+
+Log file name: /home/akshada/app.log
+
+Total error count:
+2
+
+Top 5 error messages with their occurrence count:
+      1 Memoryusageexceeded
+      1 KernelPanic:Unexpected
+      1 Databaseconnectionlost!
+
+List of critical events with line numbers:
+2026-03-31 15:30:12 [CRITICAL] Memory usage exceeded 90% threshold! Triggering cleanup.
+2026-03-31 15:50:55 [CRITICAL] Database connection lost! Unable to reconnect after 5 attempts.
+2026-03-31 16:00:05 [CRITICAL] Kernel Panic: Unexpected interrupt from storage driver.
