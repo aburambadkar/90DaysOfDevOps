@@ -72,6 +72,13 @@ Runner — the machine that executes the job
 
 Artifact — output produced by a job
 
+
+Task 4: Draw a Pipeline
+
+A developer pushes code to GitHub. The app is tested, built into a Docker image, and deployed to a staging server.
+
+Stages of Pipeline:
+
 Source: Push code to GitHub.
 
 App Build/Prep: Install dependencies e.g., pip install -r requirements or compile the source code into a runnable format like a .jar or .exe before the tests can even start.
@@ -83,3 +90,20 @@ Docker Build: Convert the passed code into a Docker Image.
 Integration Tests: Start the Docker container and test if it connects to other services (like a Database).
 
 Deploy: Push that specific, tested Docker image to Staging/Production.
+
+![My CI/CD Pipeline Diagram](cicd-flow.png)
+
+
+Task 5: Explore in the Wild
+
+Open any popular open-source repo on GitHub (Kubernetes, React, FastAPI — pick one you know)
+Find their .github/workflows/ folder
+Open one workflow YAML file
+
+Write in your notes:
+
+What triggers it?
+
+How many jobs does it have?
+
+What does it do? (best guess)
