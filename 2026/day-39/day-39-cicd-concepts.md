@@ -100,10 +100,38 @@ Open any popular open-source repo on GitHub (Kubernetes, React, FastAPI — pick
 Find their .github/workflows/ folder
 Open one workflow YAML file
 
+FAST api add-to-project.yaml
+```
+name: Add to Project
+
+on:
+  pull_request_target:
+  issues:
+    types:
+      - opened
+      - reopened
+
+jobs:
+  add-to-project:
+    name: Add to project
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/add-to-project@v1.0.2
+        with:
+          project-url: https://github.com/orgs/fastapi/projects/2
+          github-token: ${{ secrets.PROJECTS_TOKEN }}
+```
+
 Write in your notes:
 
-What triggers it?
+What triggers it? 
+
+If there is a pull request created, a new issue is opened or reopened
+
 
 How many jobs does it have?
+1 job
 
-What does it do? (best guess)
+What does it do? 
+
+It automatically takes new Issues and Pull Requests and adds them to the FastAPI Team's Project Board. It uses a pre-made GitHub Action (actions/add-to-project) to do the heavy lifting.
