@@ -1,0 +1,18 @@
+# Name of the workflow
+name: prcheck
+
+# Defining Trigger condition
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize ]
+
+# Defining the the job will do here
+jobs:
+  pr:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+    - name: PR check running
+      run: echo "PR check running for branch ${{ github.head_ref }}"
