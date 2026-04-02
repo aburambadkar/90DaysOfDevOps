@@ -1,0 +1,17 @@
+name: manual-workflow
+
+on:
+ workflow_dispatch:
+   inputs:
+     environment:
+       options:
+       - staging
+       - production
+
+
+jobs:
+  mymanual:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Prints the value of env
+      run : echo "${{ github.event.inputs.environment }}"
