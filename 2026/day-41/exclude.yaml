@@ -1,0 +1,32 @@
+name: python-matrix
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened]
+
+jobs:
+  validate:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      # If one job fails, keep the other 5 running
+      fail-fast: false 
+      
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ["3.10", "3.11", "3.12"]
+        
+        # This removes one specific pair from the "6 total jobs"
+        exclude:
+          - os: windows-latest
+            python-version: "3.10"
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Install python
+      uses: actions/setup-python@v5 
+        with:
+          python-version: ${{ matrix.python-versions }}
+    - name: verify python version
+      run: python --version
