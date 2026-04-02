@@ -1,0 +1,17 @@
+aburambadkar:~/Desktop/pipeline/github-actions-practice/.github/workflows$ cat schedule-trigger.yml
+name: schedule-trigger
+
+on:
+ push:
+   branches: [main]
+
+ schedule:
+ - cron: '0 0 * * *'
+
+jobs:
+  schedulejob:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Run a health check
+      run: echo "Starting the automated daily system scan..."
+
