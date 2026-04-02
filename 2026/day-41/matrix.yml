@@ -1,0 +1,22 @@
+name: python-matrix
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+    validate:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                python-versions: ["3.10", "3.11", "3.12"]
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+            - name: Install python
+              uses: actions/setup-python@v5
+              with:
+                python-version: ${{ matrix.python-versions }}
+            - name: verify python version
+              run: python --version%
