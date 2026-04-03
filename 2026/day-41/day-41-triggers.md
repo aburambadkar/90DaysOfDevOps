@@ -10,9 +10,6 @@ on:
 opened: Triggers the workflow the very first time a Pull Request is created.
 synchronize(update): Triggers the workflow every time you push new commits to an existing Pull Request branch.
 
-github.head_ref: Returns the name of the "source" branch (e.g., testing) where the developer actually wrote the code.
-github.ref_name: Returns the "merge-preview" branch (e.g., 1/merge), which is a temporary version of what the code looks like after it
-is merged.
 
 Pratical example:
 ```
