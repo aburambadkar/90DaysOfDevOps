@@ -34,3 +34,9 @@ Task 6 Observations:
 | **Pre-installed Tools** | 100s of tools included | Custom (You install them) |
 | **Security** | High (Disposable VMs) | Moderate (Persistent environment) |
 | **Best For** | General purpose builds | Private data & High performance |
+
+
+How to check logs on the runner when its been configured as a systemd service: sudo ./svc.sh install && sudo ./svc.sh start
+```
+sudo journalctl -u actions.runner.* -f
+```
