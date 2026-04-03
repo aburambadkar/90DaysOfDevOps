@@ -1,0 +1,24 @@
+name: hosted
+
+on:
+  push:
+    branches: [main]
+
+
+jobs:
+   my-hosted-job:
+     runs-on: ${{ matrix.os }}
+     strategy:
+       fail-fast: false
+       matrix:
+         os: ["ubuntu-latest", "windows-latest", "macos-latest"]
+
+     steps:
+      - name: OS name
+        run: echo "${{ runner.os }}"
+
+      - name: hostname
+        run: hostname
+
+      - name: Current user
+        run: whoami
