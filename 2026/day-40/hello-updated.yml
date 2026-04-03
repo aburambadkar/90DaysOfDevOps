@@ -1,0 +1,21 @@
+name: hello-updated-workflow
+
+on:
+  push:
+    branches: [main]
+
+
+jobs:
+  updated-hello:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Print current date and time
+      run: date
+    - name: Name of the branch that triggered the run
+      run: echo "${{ github.ref_name }}"
+    - name: checkout repo
+      uses: actions/checkout@v4
+    - name: listing files
+      uses: ls -al
+    - name: Checking os of the runner
+      run: echo the OS is "${{ runner.os }}"
