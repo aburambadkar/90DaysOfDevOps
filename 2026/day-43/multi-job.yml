@@ -1,0 +1,23 @@
+name: multijob
+
+on:
+ workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: aws-self-hosted
+    steps:
+    - name: build
+      run: echo "Building the app"
+  test:
+    runs-on: aws-self-hosted
+    needs: build
+    steps:
+    - name: Testing
+      run: echo "Running tests"
+  deploy:
+    runs-on: aws-self-hosted
+    needs: test
+    steps:
+    - name: deploy
+      run: echo "Deploying"
