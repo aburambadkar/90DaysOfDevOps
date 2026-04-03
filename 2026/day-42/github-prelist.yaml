@@ -1,0 +1,18 @@
+name: preinstalled-software
+
+on:
+ push:
+   branches: [main]
+
+
+jobs:
+  check-preinstalled-software:
+    runs-on: ubuntu-latest
+    steps:
+    - name: check versions
+      # This | allows you to provide multiple commands line by line
+      run: |
+        docker --version
+        python3 --version
+        git --version
+        node --version
