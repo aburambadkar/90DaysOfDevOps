@@ -1,0 +1,27 @@
+name: Variable scoping test
+
+on:
+  workflow_dispatch:
+
+env:
+  APP_NAME: myapp
+
+jobs:
+  display-vars:
+    runs-on: ubuntu-latest
+    env:
+      ENVIRONMENT: staging
+
+    steps:
+      - name: Print all variables
+        env:
+          VERSION: 1.0.0 
+        run: |
+          echo "Application: $APP_NAME"
+          echo "Environment: $ENVIRONMENT"
+          echo "Version: $VERSION"
+      
+      - name: Print GitHub Context
+        run: |
+          echo "Commit SHA: ${{ github.sha }}"
+          echo "Triggered by: ${{ github.actor }}"
