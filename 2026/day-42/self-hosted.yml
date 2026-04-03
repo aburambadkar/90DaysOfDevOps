@@ -1,0 +1,17 @@
+name: my-self-hosted
+
+on:
+ workflow_dispatch:
+
+
+jobs:
+  my-self-job:
+    # Add labels for the runner and not the name of the runner
+    runs-on: [aws-self-hosted, my-linux-runner] 
+    steps:
+    - name: Print the hostname of the machine
+      run: hostname
+    - name: Print the working directory
+      run: pwd
+    - name: Create a file and verify it exists on your machine after the run
+      run: touch hello.txt
