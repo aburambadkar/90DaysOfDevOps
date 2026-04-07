@@ -1,0 +1,36 @@
+name: smart-pipeline
+
+on:
+  push:
+    branches:
+      - '**' # Triggers on push to any branch
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Linter
+        run: echo "Linting code for best practices..."
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Tests
+        run: echo "Running unit tests..."
+
+  summary:
+    runs-on: ubuntu-latest
+    # This ensures summary waits for the parallel jobs to finish
+    needs: [lint, test]
+    steps:
+      - name: Branch Detection and Commit Info
+        run: |
+          # Logic to determine branch type
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            echo "Branch Type: This is a push to the MAIN branch."
+          else
+            echo "Branch Type: This is a push to a FEATURE branch (${{ github.ref_name }})."
+          fi
+          
+          # Print the commit message
+          echo "Commit Message: ${{ github.event.head_commit.message }}"
