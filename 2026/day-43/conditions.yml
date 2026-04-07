@@ -1,0 +1,32 @@
+name: conditional-workflow
+
+on: 
+  push:
+    branches: [main]
+  pull_request: 
+    branches: [main]
+
+jobs:
+   my-job:
+     if: github.event_name == 'push'
+     runs-on: ubuntu-latest
+
+ 
+     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Step with continue-on-error
+        id: risky_step
+        continue-on-error: true
+        run: |
+          echo "This step might fail, but the workflow will keep going."
+          exit 1  # Simulating a failure
+
+      - name: Step that only runs when the previous step failed
+        if: steps.risky_step.outcome == 'failure'
+        run: echo "The risky step failed, so I am running to clean up or alert!"
+
+      - name: Step that only runs when the branch is main
+        if: github.ref == 'refs/heads/main'
+        run: echo "I am running because this is the main branch."
