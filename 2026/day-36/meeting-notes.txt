@@ -4,6 +4,6 @@ This app connects to a database, creates a table if it doesn't exist, and lets u
 
 - port is hardcoded to use 5000, this will require port mapping
 
-- db service name is hardcode so make sure to use the same name db in the compose.
+- db service name is hardcoded so make sure to use the same name db in the compose.
 
 - Any specific python versions required for this image: python:3.9-alpine
