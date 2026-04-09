@@ -14,3 +14,9 @@ GitHub Actions automatically masks any value defined in your "Secrets" vault.
 The Log Redactor: As the workflow runs, GitHub scans the console output in real-time. If it detects a string that matches one of your stored secrets, it replaces it with *** before the logs are saved or displayed.
 
 Security Layer: This protects you in case you accidentally echo a variable or a tool prints a debug log containing an API key.
+
+Task 3 Observations:
+
+Why use actions/upload-artifact?
+
+Imagine you are compiling a Java application or building a Docker image. The runner does the hard work, but you need the final .jar or log file on your local machine or a production server. This action "rescues" the file before the runner is deleted.
