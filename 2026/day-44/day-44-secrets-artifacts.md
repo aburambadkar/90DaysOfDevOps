@@ -20,3 +20,8 @@ Task 3 Observations:
 Why use actions/upload-artifact?
 
 Imagine you are compiling a Java application or building a Docker image. The runner does the hard work, but you need the final .jar or log file on your local machine or a production server. This action "rescues" the file before the runner is deleted.
+
+Task 6 Observations:
+
+If you use actions/cache@v4 before installing dependencies, it creates a cache folder which contains your requirements files.
+So nect time when you run the pipeline again, it uses this folder which is stored on githubs storage to install the dependencies.
