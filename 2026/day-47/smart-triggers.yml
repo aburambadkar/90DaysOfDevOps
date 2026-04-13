@@ -1,0 +1,15 @@
+name: smart-workflow
+
+on:
+  push:
+    branches: 
+    - 'main'
+    - 'release/**''
+    paths:
+        - 'src/**'
+        - 'app/**'
+
+# You can also ask to ignore files that are changed in a repo      
+    paths-ignore:
+        - '*.md'
+        - 'docs/**'
